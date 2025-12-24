@@ -48,20 +48,18 @@ class ApartmentScene extends Phaser.Scene {
         // Set physics world bounds to match the MAP size, not canvas
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         
-        // Add all tilesets
-        const allTilesets = [
-            map.addTilesetImage('3d_walls', '3d_walls'),
-            map.addTilesetImage('bedroom', 'bedroom'),
-            map.addTilesetImage('cones', 'cones'),
-            map.addTilesetImage('generic', 'generic'),
-            map.addTilesetImage('grocery', 'grocery'),
-            map.addTilesetImage('home_1', 'home_1'),
-            map.addTilesetImage('home_2', 'home_2'),
-            map.addTilesetImage('kitchen', 'kitchen'),
-            map.addTilesetImage('living_room', 'living_room'),
-            map.addTilesetImage('room_builder', 'room_builder'),
-            map.addTilesetImage('tv', 'tv')
-        ];
+        // Add all tilesets with texture settings
+        const tilesetNames = ['3d_walls', 'bedroom', 'cones', 'generic', 'grocery', 
+                              'home_1', 'home_2', 'kitchen', 'living_room', 'room_builder', 'tv'];
+        const allTilesets = tilesetNames.map(name => {
+            const tileset = map.addTilesetImage(name, name);
+            if (tileset) {
+                // Set texture to not use mipmaps and filtering
+                const texture = this.textures.get(name);
+                texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+            }
+            return tileset;
+        });
         
         // Create layers
         const floorLayer = map.createLayer('Floor', allTilesets, 0, 0);
@@ -228,24 +226,19 @@ class BedroomScene extends Phaser.Scene {
         // Set physics world bounds to match the MAP size, not canvas
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         
-        // Add all tilesets
-        const allTilesets = [
-            map.addTilesetImage('3d_walls', '3d_walls'),
-            map.addTilesetImage('art', 'art'),
-            map.addTilesetImage('basement', 'basement'),
-            map.addTilesetImage('bedroom', 'bedroom'),
-            map.addTilesetImage('christmas', 'christmas'),
-            map.addTilesetImage('classroom', 'classroom'),
-            map.addTilesetImage('clothing', 'clothing'),
-            map.addTilesetImage('floors', 'floors'),
-            map.addTilesetImage('generic', 'generic'),
-            map.addTilesetImage('grocery', 'grocery'),
-            map.addTilesetImage('hospital', 'hospital'),
-            map.addTilesetImage('living_room', 'living_room'),
-            map.addTilesetImage('museum', 'museum'),
-            map.addTilesetImage('music', 'music'),
-            map.addTilesetImage('room_builder', 'room_builder')
-        ];
+        // Add all tilesets with texture settings
+        const tilesetNames = ['3d_walls', 'art', 'basement', 'bedroom', 'christmas', 
+                              'classroom', 'clothing', 'floors', 'generic', 'grocery', 
+                              'hospital', 'living_room', 'museum', 'music', 'room_builder'];
+        const allTilesets = tilesetNames.map(name => {
+            const tileset = map.addTilesetImage(name, name);
+            if (tileset) {
+                // Set texture to not use mipmaps and filtering
+                const texture = this.textures.get(name);
+                texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+            }
+            return tileset;
+        });
         
         // Create layers explicitly
         const floorLayer = map.createLayer('Floor', allTilesets, 0, 0);
