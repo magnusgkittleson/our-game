@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="12" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="30" nextobjectid="11">
+ <editorsettings>
+  <export target="dacia_bedroom.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="bedroom" tilewidth="32" tileheight="32" tilecount="1712" columns="16">
+  <image source="../tilesets/bedroom.png" width="512" height="3424"/>
+ </tileset>
+ <tileset firstgid="1713" name="generic" tilewidth="32" tileheight="32" tilecount="1248" columns="16">
+  <image source="../tilesets/generic.png" width="512" height="2496"/>
+ </tileset>
+ <tileset firstgid="2961" name="music" tilewidth="32" tileheight="32" tilecount="768" columns="16">
+  <image source="../tilesets/music.png" width="512" height="1536"/>
+ </tileset>
+ <tileset firstgid="3729" name="art" tilewidth="32" tileheight="32" tilecount="112" columns="16">
+  <image source="../tilesets/art.png" width="512" height="224"/>
+ </tileset>
+ <tileset firstgid="3841" name="room_builder" tilewidth="32" tileheight="32" tilecount="8588" columns="76">
+  <image source="../tilesets/room_builder.png" width="2432" height="3616"/>
+ </tileset>
+ <tileset firstgid="12429" name="3d_walls" tilewidth="32" tileheight="32" tilecount="1416" columns="24">
+  <image source="../tilesets/3d_walls.png" width="768" height="1888"/>
+ </tileset>
+ <tileset firstgid="13845" name="floors" tilewidth="32" tileheight="32" tilecount="600" columns="15">
+  <image source="../tilesets/floors.png" width="480" height="1280"/>
+ </tileset>
+ <tileset firstgid="14445" name="classroom" tilewidth="32" tileheight="32" tilecount="544" columns="16">
+  <image source="../tilesets/classroom.png" width="512" height="1088"/>
+ </tileset>
+ <tileset firstgid="14989" name="living_room" tilewidth="32" tileheight="32" tilecount="720" columns="16">
+  <image source="../tilesets/living_room.png" width="512" height="1440"/>
+ </tileset>
+ <tileset firstgid="15709" name="christmas" tilewidth="32" tileheight="32" tilecount="272" columns="16">
+  <image source="../tilesets/christmas.png" width="512" height="544"/>
+ </tileset>
+ <tileset firstgid="15981" name="clothing" tilewidth="32" tileheight="32" tilecount="1072" columns="16">
+  <image source="../tilesets/clothing.png" width="512" height="2144"/>
+ </tileset>
+ <tileset firstgid="17053" name="museum" tilewidth="32" tileheight="32" tilecount="1952" columns="16">
+  <image source="../tilesets/museum.png" width="512" height="3904"/>
+ </tileset>
+ <tileset firstgid="19005" name="basement" tilewidth="32" tileheight="32" tilecount="800" columns="16">
+  <image source="../tilesets/basement.png" width="512" height="1600"/>
+ </tileset>
+ <tileset firstgid="19805" name="grocery" tilewidth="32" tileheight="32" tilecount="1248" columns="16">
+  <image source="../tilesets/grocery.png" width="512" height="2496"/>
+ </tileset>
+ <tileset firstgid="21053" name="hospital" tilewidth="32" tileheight="32" tilecount="1760" columns="16">
+  <image source="../tilesets/hospital.png" width="512" height="3520"/>
+ </tileset>
+ <layer id="17" name="Floor" width="12" height="10">
+  <data encoding="csv">
+14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,
+14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,
+14413,14397,14398,14398,14398,14398,14398,14398,14398,14398,14398,14413,
+14413,14412,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,
+14413,14412,14413,14413,14413,14413,14413,14398,14398,14413,14413,14413,
+14413,14412,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,
+14413,14412,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,
+14413,14412,14413,14413,14413,14413,14413,14413,14413,14413,14413,13993,
+14413,14412,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413,
+13992,14412,14413,14413,14413,14413,14413,14413,14413,14413,14413,14413
+</data>
+ </layer>
+ <layer id="18" name="Walls" width="12" height="10">
+  <data encoding="csv">
+12806,12832,12832,12832,12832,12832,12832,12832,12832,12832,12832,12811,
+12854,12856,12856,12856,12856,12856,12856,12856,12856,12856,12856,12859,
+12902,2061,2062,2063,2064,0,0,0,0,0,0,12907,
+12902,2077,2078,2079,2080,0,0,0,0,0,0,12907,
+12902,2093,2094,2095,2096,0,0,0,0,0,0,12907,
+12902,2109,2110,2111,2112,0,0,0,0,0,0,12907,
+12902,0,0,0,0,0,0,0,0,0,0,12907,
+12902,0,0,0,0,0,0,0,0,0,0,12907,
+12902,0,0,0,0,0,0,0,0,0,0,12907,
+12902,0,0,0,0,0,0,1073755674,1073755674,0,0,12907
+</data>
+ </layer>
+ <layer id="20" name="On Floor" width="12" height="10">
+  <data encoding="csv">
+0,0,0,2736,0,0,0,0,0,0,0,0,
+0,0,0,2752,0,0,0,0,0,0,0,0,
+0,0,0,2768,0,0,0,951,952,0,0,0,
+0,0,0,0,0,0,0,1009,1010,0,0,0,
+0,0,0,0,0,0,0,963,964,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,2068,2070,2070,2069,0,0,0,0,0,0,
+0,0,2084,2086,2086,2085,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="26" name="Tile Layer 6" width="12" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,3803,0,0,0,
+0,0,0,0,0,0,0,0,3819,0,0,0,
+0,0,0,0,0,0,0,22578,0,0,0,0,
+0,0,0,0,0,0,0,22594,940,0,0,0,
+0,0,0,0,0,0,0,955,956,0,0,0,
+0,0,0,0,0,0,0,19881,19882,0,0,0,
+0,0,0,0,0,0,0,19897,19898,0,0,0,
+0,0,15760,15761,15762,15763,0,0,0,0,0,0,
+0,0,15776,15777,15778,15779,0,0,0,0,0,0,
+0,0,15792,15793,15794,15795,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="19" name="On Walls" width="12" height="10">
+  <data encoding="csv">
+0,14612,14613,0,1204,1205,1206,1275,1276,0,0,0,
+0,14628,14629,0,1220,1221,1222,1291,1292,0,0,0,
+0,14644,14645,0,1236,1237,1238,0,0,0,0,0,
+0,0,0,0,0,0,0,939,940,0,0,0,
+0,0,0,0,0,0,0,955,956,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,15710,15711,0,0,0,0,0,2552,0,
+0,0,0,15726,15727,0,0,0,0,0,2551,0,
+0,0,0,15742,15743,0,0,0,0,0,2568,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="23" name="up" width="12" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,16454,17630,0,
+0,0,0,0,0,0,3774,0,0,16470,17646,0,
+0,0,0,0,0,0,3790,0,0,16486,0,0,
+0,0,0,0,0,3833,0,0,0,0,0,0,
+0,0,0,0,0,0,0,19513,19514,0,20978,0,
+0,0,0,0,0,0,0,19529,19530,0,20994,0,
+0,0,0,15811,15812,0,0,0,0,0,21010,0,
+0,0,0,15827,15828,0,0,0,0,0,15117,0,
+0,3544,0,15843,15844,0,0,0,0,0,0,0,
+0,3560,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="27" name="Collision" width="12" height="10">
+  <data encoding="csv">
+13981,13981,13981,13981,13981,13981,13981,13981,13981,13981,13981,13981,
+13981,13981,13981,13981,13981,13981,13981,13981,13981,13981,13981,13981,
+13981,0,0,13981,0,0,13981,13981,13981,0,0,13981,
+13981,0,0,0,0,13981,0,0,0,0,0,13981,
+13981,0,0,0,0,0,0,13981,13981,0,0,13981,
+13981,0,0,0,0,0,0,13981,13981,0,13981,13981,
+13981,0,0,0,0,0,0,13981,13981,0,13981,13981,
+13981,0,0,13981,13981,0,0,0,0,0,13981,13981,
+13981,13981,0,13981,13981,0,0,0,0,0,13981,13981,
+13981,13981,13981,13981,13981,13981,13981,0,0,0,0,13981
+</data>
+ </layer>
+ <objectgroup id="28" name="objects">
+  <object id="1" name="player_spawn" x="243.333" y="262.667"/>
+  <object id="3" name="door_to_apartment" x="224" y="298.667" width="62.6667" height="20.6667">
+   <properties>
+    <property name="spawn_x" type="int" value="165"/>
+    <property name="spawn_y" type="int" value="55"/>
+    <property name="target_map" value="dacia_apartment"/>
+   </properties>
+  </object>
+  <object id="6" name="computer" x="42" y="19.3333" width="42.6667" height="51.3333">
+   <properties>
+    <property name="type" value="message_computer"/>
+   </properties>
+  </object>
+  <object id="9" name="table_note" x="311.333" y="226" width="30.6667" height="32">
+   <properties>
+    <property name="note_id" value="bedroom_letter_1.txt"/>
+    <property name="type" value="readable_note"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

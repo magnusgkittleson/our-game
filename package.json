@@ -1,0 +1,12 @@
+{
+  "name": "dacia-game",
+  "version": "1.0.0",
+  "description": "A cozy game for Dacia",
+  "main": "game.js",
+  "scripts": {
+    "start": "npx http-server -p 8080"
+  },
+  "dependencies": {
+    "phaser": "^3.70.0"
+  }
+}

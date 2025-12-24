@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Game for Dacia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        body {
+            background: #1a1a1a;
+            overflow: hidden;
+            font-family: 'Press Start 2P', monospace, sans-serif;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+        
+        #game-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: none;
+        }
+        
+        canvas {
+            display: block;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        
+        /* Portrait Mode - GameBoy Style */
+        @media (orientation: portrait) {
+            #game-container {
+                flex-direction: column;
+                background: linear-gradient(145deg, #8b7ab8, #6b5a98);
+                padding: 0;
+                justify-content: flex-start;
+                gap: 0;
+            }
+            
+            #screen-frame {
+                background: #000000;
+                border: 6px solid #1a1a1a;
+                border-radius: 0;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                padding: 8px;
+                box-shadow: inset 0 4px 8px rgba(0,0,0,0.5);
+                order: 1;
+                width: 100%;
+                aspect-ratio: 4/3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+            
+            canvas {
+                border: none;
+                border-radius: 0;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: fill;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            #controls {
+                display: flex;
+                gap: 50px;
+                padding: 120px 20px 40px 20px;
+                order: 2;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                width: 100%;
+            }
+        }
+        
+        /* Landscape Mode - Fullscreen with overlay controls */
+        @media (orientation: landscape) {
+            #game-container {
+                background: #000;
+            }
+            
+            #screen-frame {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            #controls {
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 30px;
+                pointer-events: none;
+            }
+            
+            #controls > * {
+                pointer-events: all;
+            }
+        }
+        
+        /* D-Pad */
+        #dpad {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        
+        .dpad-btn {
+            position: absolute;
+            width: 98px;
+            height: 98px;
+            background: rgba(50, 50, 50, 0.7);
+            border: 3px solid rgba(100, 100, 100, 0.8);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(200, 200, 200, 0.9);
+            font-size: 40px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.1s;
+        }
+        
+        .dpad-btn:active {
+            background: rgba(80, 80, 120, 0.9);
+            transform: scale(0.95);
+        }
+        
+        #btn-up { top: 0; left: 101px; }
+        #btn-down { bottom: 0; left: 101px; }
+        #btn-left { top: 101px; left: 0; }
+        #btn-right { top: 101px; right: 0; }
+        
+        /* Center circle for D-pad */
+        #dpad::before {
+            content: '';
+            position: absolute;
+            width: 78px;
+            height: 78px;
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 50%;
+            top: 111px;
+            left: 111px;
+            z-index: -1;
+        }
+        
+        /* Action Buttons */
+        #action-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .action-btn {
+            width: 90px;
+            height: 90px;
+            background: rgba(180, 50, 50, 0.7);
+            border: 4px solid rgba(200, 80, 80, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.1s;
+        }
+        
+        .action-btn:active {
+            background: rgba(220, 80, 80, 0.9);
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Landscape specific adjustments */
+        @media (orientation: landscape) {
+            .dpad-btn, .action-btn {
+                background: rgba(50, 50, 50, 0.5);
+                border-color: rgba(100, 100, 100, 0.6);
+            }
+            
+            .dpad-btn:active {
+                background: rgba(80, 80, 120, 0.7);
+            }
+            
+            .action-btn {
+                background: rgba(180, 50, 50, 0.5);
+                border-color: rgba(200, 80, 80, 0.7);
+            }
+            
+            .action-btn:active {
+                background: rgba(220, 80, 80, 0.7);
+            }
+            
+            #btn-b {
+                background: rgba(100, 100, 180, 0.5);
+                border-color: rgba(120, 120, 200, 0.7);
+            }
+            
+            #btn-b:active {
+                background: rgba(140, 140, 220, 0.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="screen-frame">
+            <!-- Phaser canvas will be inserted here -->
+        </div>
+        
+        <div id="controls">
+            <!-- D-Pad -->
+            <div id="dpad">
+                <div class="dpad-btn" id="btn-up">▲</div>
+                <div class="dpad-btn" id="btn-down">▼</div>
+                <div class="dpad-btn" id="btn-left">◀</div>
+                <div class="dpad-btn" id="btn-right">▶</div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div id="action-buttons">
+                <div class="action-btn" id="btn-a">A</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
+    <script src="game.js"></script>
+    <script>
+        // Touch controls
+        const controls = {
+            up: false,
+            down: false,
+            left: false,
+            right: false,
+            a: false,
+            b: false
+        };
+        
+        function setupTouchButton(id, key) {
+            const btn = document.getElementById(id);
+            
+            btn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                controls[key] = true;
+            });
+            
+            btn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                controls[key] = false;
+            });
+            
+            btn.addEventListener('touchcancel', (e) => {
+                e.preventDefault();
+                controls[key] = false;
+            });
+        }
+        
+        setupTouchButton('btn-up', 'up');
+        setupTouchButton('btn-down', 'down');
+        setupTouchButton('btn-left', 'left');
+        setupTouchButton('btn-right', 'right');
+        setupTouchButton('btn-a', 'a');
+        
+        // Make controls available to Phaser
+        window.touchControls = controls;
+    </script>
+</body>
+</html>
