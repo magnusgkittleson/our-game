@@ -571,6 +571,7 @@ function createAnimations(scene) {
 }
 
 // Game configuration - must come AFTER scene classes are defined
+// Game configuration - must come AFTER scene classes are defined
 const config = {
     type: Phaser.AUTO,
     parent: 'screen-frame',
@@ -587,7 +588,12 @@ const config = {
         width: 640,
         height: 480
     },
-    backgroundColor: '#000000'
+    backgroundColor: '#000000',
+    render: {
+        pixelArt: true,
+        antialias: false,
+        roundPixels: true
+    }
 };
 
 const game = new Phaser.Game(config);
