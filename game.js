@@ -112,9 +112,10 @@ class ApartmentScene extends Phaser.Scene {
             });
         }
         
-        // Camera
+        // Camera setup with pixel-perfect rendering
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.cameras.main.roundPixels = true;
         
         // Create animations
         createAnimations(this);
@@ -299,9 +300,10 @@ class BedroomScene extends Phaser.Scene {
             });
         }
         
-        // Camera
+        // Camera setup with pixel-perfect rendering
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.cameras.main.roundPixels = true;
         
         // Set up sounds
         this.buttonSound = this.sound.add('buttonPress', { volume: 0.5 });
@@ -572,7 +574,7 @@ function createAnimations(scene) {
 
 // Game configuration - must come AFTER scene classes are defined
 const config = {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,  // Changed from AUTO to CANVAS for better control
     parent: 'screen-frame',
     physics: {
         default: 'arcade',
@@ -583,11 +585,17 @@ const config = {
     },
     scene: [ApartmentScene, BedroomScene],
     scale: {
-        mode: Phaser.Scale.NONE,  // No automatic scaling
+        mode: Phaser.Scale.NONE,
         width: 640,
         height: 480
     },
-    backgroundColor: '#ffffffff'
+    backgroundColor: '#000000',
+    render: {
+        pixelArt: true,
+        antialias: false,
+        antialiasGL: false,
+        roundPixels: true
+    }
 };
 
 const game = new Phaser.Game(config);
