@@ -590,12 +590,7 @@ const config = {
         height: 480
     },
     backgroundColor: '#000000',
-    render: {
-        pixelArt: true,
-        antialias: false,
-        antialiasGL: false,
-        roundPixels: true
-    }
+    
 };
 
 const game = new Phaser.Game(config);
