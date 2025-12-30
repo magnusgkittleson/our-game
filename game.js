@@ -688,8 +688,8 @@ const config = {
     scene: [ApartmentScene, BedroomScene],
     scale: {
         mode: Phaser.Scale.NONE,
-        width: 640,
-        height: 480
+        width: 320,
+        height: 240
     },
     backgroundColor: '#000000',
     render: {
@@ -699,7 +699,7 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-// Use CSS transform for integer scaling instead of resizing canvas
+// Use CSS transform for integer scaling
 function resizeGame() {
     const screenFrame = document.getElementById('screen-frame');
     const canvas = game.canvas;
@@ -709,17 +709,17 @@ function resizeGame() {
         const containerHeight = screenFrame.clientHeight;
         
         // Calculate the largest integer scale that fits
-        const scaleX = Math.floor(containerWidth / 640);
-        const scaleY = Math.floor(containerHeight / 480);
+        const scaleX = Math.floor(containerWidth / 320);
+        const scaleY = Math.floor(containerHeight / 240);
         const scale = Math.max(1, Math.min(scaleX, scaleY));
         
-        // Apply CSS transform instead of resizing
+        // Apply CSS transform
         canvas.style.transform = `scale(${scale})`;
         canvas.style.transformOrigin = 'top left';
         
         // Center it
-        const scaledWidth = 640 * scale;
-        const scaledHeight = 480 * scale;
+        const scaledWidth = 320 * scale;
+        const scaledHeight = 240 * scale;
         canvas.style.marginLeft = Math.floor((containerWidth - scaledWidth) / 2) + 'px';
         canvas.style.marginTop = Math.floor((containerHeight - scaledHeight) / 2) + 'px';
     }
