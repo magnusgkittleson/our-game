@@ -687,8 +687,7 @@ const config = {
     },
     scene: [ApartmentScene, BedroomScene],
     scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
+        mode: Phaser.Scale.NONE,
         width: 640,
         height: 480
     },
@@ -696,3 +695,33 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+
+// Integer scaling - resize to whole number multiples only
+function resizeGame() {
+    const screenFrame = document.getElementById('screen-frame');
+    if (screenFrame) {
+        const containerWidth = screenFrame.clientWidth;
+        const containerHeight = screenFrame.clientHeight;
+        
+        // Calculate the largest integer scale that fits
+        const scaleX = Math.floor(containerWidth / 640);
+        const scaleY = Math.floor(containerHeight / 480);
+        const scale = Math.max(1, Math.min(scaleX, scaleY));
+        
+        // Resize to integer multiple
+        const newWidth = 640 * scale;
+        const newHeight = 480 * scale;
+        
+        game.scale.resize(newWidth, newHeight);
+        
+        // Center the canvas using CSS if needed
+        const canvas = game.canvas;
+        canvas.style.marginLeft = Math.floor((containerWidth - newWidth) / 2) + 'px';
+        canvas.style.marginTop = Math.floor((containerHeight - newHeight) / 2) + 'px';
+    }
+}
+
+window.addEventListener('resize', resizeGame);
+window.addEventListener('load', resizeGame);
+// Call immediately
+setTimeout(resizeGame, 100);
