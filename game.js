@@ -37,6 +37,15 @@ class ApartmentScene extends Phaser.Scene {
         this.load.audio('bgMusic', 'sounds/background_music.mp3');
         this.load.audio('buttonPress', 'sounds/button_press.mp3');
         this.load.audio('doorSound', 'sounds/door_sound.mp3');
+        
+        // Load player NPC sprite
+        this.load.spritesheet('player_npc', 'characters/player_character.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        });
+        
+        // Load UI dialogue box
+        this.load.image('dialogueBox', 'ui/dialogue_box.png');
     }
 
     create() {
@@ -151,7 +160,35 @@ class ApartmentScene extends Phaser.Scene {
                     }
                 }, null, this);
             }
+            
+            // Create NPC (you!)
+            const npcObject = objectLayer.objects.find(obj => obj.name === 'npc_player');
+            if (npcObject) {
+                this.npc = this.physics.add.sprite(npcObject.x, npcObject.y, 'player_npc');
+                this.npc.setFrame(10 * 13); // Standing facing down (row 10, frame 0)
+                this.npc.body.setImmovable(true);
+                
+                // Create interaction zone around NPC
+                this.npcZone = this.add.zone(npcObject.x, npcObject.y, 64, 64);
+                this.npcZone.setOrigin(0.5, 0.5);
+                this.physics.add.existing(this.npcZone, true);
+                
+                this.nearNPC = false;
+                
+                this.physics.add.overlap(this.player, this.npcZone, () => {
+                    this.nearNPC = true;
+                }, null, this);
+            }
         }
+        
+        // Dialogue system variables
+        this.dialogueActive = false;
+        this.dialogueMessages = [
+            "Hey babe! Welcome to our game!",
+            "I made this for you for Christmas.",
+            "I hope you love it as much as I love you! ❤️"
+        ];
+        this.currentDialogueIndex = 0;
         
         console.log('Apartment created!');
     }
@@ -167,7 +204,31 @@ class ApartmentScene extends Phaser.Scene {
         const rightPressed = this.cursors.right.isDown || touchControls.right;
         const upPressed = this.cursors.up.isDown || touchControls.up;
         const downPressed = this.cursors.down.isDown || touchControls.down;
+        const aPressed = Phaser.Input.Keyboard.JustDown(this.actionKey) || (touchControls.a && !this.lastAPressed);
         
+        // Track A button state
+        this.lastAPressed = touchControls.a;
+        
+        // Handle dialogue
+        if (this.dialogueActive) {
+            if (aPressed) {
+                this.buttonSound.play();
+                this.advanceDialogue();
+            }
+            this.nearNPC = false;
+            return; // Don't allow movement during dialogue
+        }
+        
+        // Check if near NPC and A pressed
+        if (this.nearNPC && aPressed) {
+            this.buttonSound.play();
+            this.startDialogue();
+        }
+        
+        // Reset nearNPC flag
+        this.nearNPC = false;
+        
+        // Movement
         if (leftPressed) {
             this.player.setVelocityX(-currentSpeed);
             this.player.anims.play('row9', true);
@@ -188,6 +249,50 @@ class ApartmentScene extends Phaser.Scene {
             this.player.anims.play('idle-' + lastDirection, true);
         }
     }
+    
+    startDialogue() {
+        this.dialogueActive = true;
+        this.currentDialogueIndex = 0;
+        this.player.setVelocity(0);
+        
+        // Create dialogue box at bottom of screen
+        const boxY = this.cameras.main.height - 100;
+        
+        this.dialogueBox = this.add.image(this.cameras.main.centerX, boxY, 'dialogueBox');
+        this.dialogueBox.setOrigin(0.5, 0.5);
+        this.dialogueBox.setScrollFactor(0);
+        this.dialogueBox.setDepth(999);
+        this.dialogueBox.setDisplaySize(this.cameras.main.width - 40, 120);
+        
+        this.dialogueText = this.add.text(
+            this.cameras.main.centerX,
+            boxY,
+            this.dialogueMessages[0],
+            {
+                fontSize: '18px',
+                color: '#000000',
+                align: 'left',
+                wordWrap: { width: this.cameras.main.width - 80 }
+            }
+        );
+        this.dialogueText.setOrigin(0.5, 0.5);
+        this.dialogueText.setScrollFactor(0);
+        this.dialogueText.setDepth(1000);
+    }
+    
+    advanceDialogue() {
+        this.currentDialogueIndex++;
+        
+        if (this.currentDialogueIndex >= this.dialogueMessages.length) {
+            // End dialogue
+            this.dialogueBox.destroy();
+            this.dialogueText.destroy();
+            this.dialogueActive = false;
+        } else {
+            // Show next message
+            this.dialogueText.setText(this.dialogueMessages[this.currentDialogueIndex]);
+        }
+    }
 }
 
 // Bedroom Scene
@@ -204,11 +309,10 @@ class BedroomScene extends Phaser.Scene {
         this.load.image('basement', 'tilesets/basement.png');
         this.load.image('christmas', 'tilesets/christmas.png');
         this.load.image('classroom', 'tilesets/classroom.png');
-        this.load.image('clothing', 'tilesets/clothing.png');
         this.load.image('floors', 'tilesets/floors.png');
-        this.load.image('hospital', 'tilesets/hospital.png');
+        this.load.image('gym', 'tilesets/gym.png');
+        this.load.image('halloween', 'tilesets/halloween.png');
         this.load.image('museum', 'tilesets/museum.png');
-        this.load.image('music', 'tilesets/music.png');
         
         // Shared tilesets already loaded in apartment
         
@@ -229,20 +333,18 @@ class BedroomScene extends Phaser.Scene {
         
         // Add all tilesets
         const allTilesets = [
-            map.addTilesetImage('3d_walls', '3d_walls'),
             map.addTilesetImage('art', 'art'),
             map.addTilesetImage('basement', 'basement'),
             map.addTilesetImage('bedroom', 'bedroom'),
             map.addTilesetImage('christmas', 'christmas'),
             map.addTilesetImage('classroom', 'classroom'),
-            map.addTilesetImage('clothing', 'clothing'),
             map.addTilesetImage('floors', 'floors'),
             map.addTilesetImage('generic', 'generic'),
             map.addTilesetImage('grocery', 'grocery'),
-            map.addTilesetImage('hospital', 'hospital'),
+            map.addTilesetImage('gym', 'gym'),
+            map.addTilesetImage('halloween', 'halloween'),
             map.addTilesetImage('living_room', 'living_room'),
             map.addTilesetImage('museum', 'museum'),
-            map.addTilesetImage('music', 'music'),
             map.addTilesetImage('room_builder', 'room_builder')
         ];
         
@@ -328,7 +430,7 @@ class BedroomScene extends Phaser.Scene {
                         this.doorTriggered = true;
                         this.doorSound.play();
                         this.time.delayedCall(200, () => {
-                            this.scene.start('ApartmentScene');
+                            this.scene.start('ApartmentScene', { fromBedroom: true });
                         });
                     }
                 }, null, this);
