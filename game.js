@@ -691,15 +691,20 @@ const config = {
         width: 640,
         height: 480
     },
-    backgroundColor: '#000000'
+    backgroundColor: '#000000',
+    render: {
+        pixelArt: true
+    }
 };
 
 const game = new Phaser.Game(config);
 
-// Integer scaling - resize to whole number multiples only
+// Use CSS transform for integer scaling instead of resizing canvas
 function resizeGame() {
     const screenFrame = document.getElementById('screen-frame');
-    if (screenFrame) {
+    const canvas = game.canvas;
+    
+    if (screenFrame && canvas) {
         const containerWidth = screenFrame.clientWidth;
         const containerHeight = screenFrame.clientHeight;
         
@@ -708,20 +713,18 @@ function resizeGame() {
         const scaleY = Math.floor(containerHeight / 480);
         const scale = Math.max(1, Math.min(scaleX, scaleY));
         
-        // Resize to integer multiple
-        const newWidth = 640 * scale;
-        const newHeight = 480 * scale;
+        // Apply CSS transform instead of resizing
+        canvas.style.transform = `scale(${scale})`;
+        canvas.style.transformOrigin = 'top left';
         
-        game.scale.resize(newWidth, newHeight);
-        
-        // Center the canvas using CSS if needed
-        const canvas = game.canvas;
-        canvas.style.marginLeft = Math.floor((containerWidth - newWidth) / 2) + 'px';
-        canvas.style.marginTop = Math.floor((containerHeight - newHeight) / 2) + 'px';
+        // Center it
+        const scaledWidth = 640 * scale;
+        const scaledHeight = 480 * scale;
+        canvas.style.marginLeft = Math.floor((containerWidth - scaledWidth) / 2) + 'px';
+        canvas.style.marginTop = Math.floor((containerHeight - scaledHeight) / 2) + 'px';
     }
 }
 
 window.addEventListener('resize', resizeGame);
 window.addEventListener('load', resizeGame);
-// Call immediately
 setTimeout(resizeGame, 100);
