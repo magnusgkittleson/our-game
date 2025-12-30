@@ -687,7 +687,7 @@ const config = {
     },
     scene: [ApartmentScene, BedroomScene],
     scale: {
-        mode: Phaser.Scale.NONE,  // No automatic scaling
+        mode: Phaser.Scale.NONE,
         width: 640,
         height: 480
     },
@@ -695,18 +695,3 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
-
-// Manually resize canvas to fill screen-frame
-function resizeGame() {
-    const screenFrame = document.getElementById('screen-frame');
-    if (screenFrame) {
-        const width = screenFrame.clientWidth;
-        const height = screenFrame.clientHeight;
-        game.scale.resize(width, height);
-    }
-}
-
-window.addEventListener('resize', resizeGame);
-window.addEventListener('load', resizeGame);
-// Call immediately
-setTimeout(resizeGame, 100);
