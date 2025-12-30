@@ -715,7 +715,7 @@ function resizeGame() {
         
         // Apply CSS transform
         canvas.style.transform = `scale(${scale})`;
-        canvas.style.transformOrigin = 'top left';
+        canvas.style.transformOrigin = 'center';
         
         // Center it
         const scaledWidth = 480 * scale;
