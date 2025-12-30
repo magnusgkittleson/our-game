@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="38" nextobjectid="19">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="38" nextobjectid="25">
  <editorsettings>
   <export target="dacia_bedroom.json" format="json"/>
  </editorsettings>
@@ -190,27 +190,27 @@
 11797,0,0,0,0,11797,11797,11797,0,0,0,0,0,0,11797,
 11797,0,0,0,0,0,11797,11797,0,0,11797,0,0,11797,11797,
 11797,0,0,0,0,0,11797,11797,0,0,0,0,0,0,11797,
-11797,0,11797,11797,0,0,0,0,0,0,0,0,0,11797,11797,
+11797,0,0,0,0,0,0,0,0,0,0,0,0,0,11797,
 11797,0,11797,11797,11797,0,0,0,0,0,0,11797,11797,11797,11797,
-11797,11797,11797,11797,11797,11797,0,0,0,0,0,11797,11797,11797,11797,
-11797,11797,11797,11797,11797,11797,11797,0,0,0,0,11797,11797,11797,11797
+11797,11797,11797,11797,11797,0,0,0,0,0,0,11797,11797,11797,11797,
+11797,11797,11797,11797,11797,0,0,0,0,0,0,11797,11797,11797,11797
 </data>
  </layer>
- <objectgroup id="28" name="objects">
+ <objectgroup id="28" name="objects" visible="0">
   <object id="1" name="player_spawn" x="243.333" y="262.667"/>
-  <object id="3" name="door_to_apartment" x="224" y="298.667" width="62.6667" height="20.6667">
+  <object id="3" name="door_to_apartment" x="224" y="314" width="62.6667" height="5.33337">
    <properties>
     <property name="spawn_x" type="int" value="165"/>
     <property name="spawn_y" type="int" value="55"/>
     <property name="target_map" value="dacia_apartment"/>
    </properties>
   </object>
-  <object id="6" name="computer" x="42" y="19.3333" width="42.6667" height="51.3333">
+  <object id="6" name="computer" x="42" y="19.3333" width="42.6667" height="70.6666">
    <properties>
     <property name="type" value="message_computer"/>
    </properties>
   </object>
-  <object id="9" name="table_note" x="342" y="241.333" width="40.6667" height="35.3334">
+  <object id="9" name="table_note" x="337.333" y="241.333" width="45.3334" height="51.3334">
    <properties>
     <property name="note_id" value="bedroom_letter_1.txt"/>
     <property name="type" value="readable_note"/>
@@ -220,10 +220,15 @@
   <object id="15" name="radio" x="344.667" y="41.3333" width="38.6667" height="44.6667"/>
   <object id="18" name="kitty" x="131" y="102.333" width="59.3333" height="54"/>
  </objectgroup>
- <objectgroup id="31" name="collision_objects">
+ <objectgroup id="31" name="collision_objects" visible="0">
   <object id="11" name="collision1" x="287.333" y="311.333" width="159.333" height="8.66667"/>
-  <object id="12" name="collision2" x="352" y="117.333" width="62.6667" height="25.3333"/>
-  <object id="13" name="collision3" x="289.333" y="63.3333" width="158" height="16.6667"/>
+  <object id="12" name="collision2" x="352" y="117.333" width="13.3334" height="25.3333"/>
+  <object id="13" name="collision3" x="289.333" y="63.3333" width="158" height="14.6667"/>
   <object id="16" name="collision4" x="144.667" y="96" width="30.6667" height="44"/>
+  <object id="19" name="collision5" x="402.667" y="117.333" width="13.3334" height="25.3333"/>
+  <object id="20" name="collision6" x="160" y="242.667" width="32" height="30.6667"/>
+  <object id="22" name="collision7" x="160.667" y="310" width="62.6667" height="9.33333"/>
+  <object id="23" name="collision8" x="84" y="199.333" width="24.6667" height="24"/>
+  <object id="24" name="collision9" x="32.6667" y="63.3333" width="64" height="19.3333"/>
  </objectgroup>
 </map>
