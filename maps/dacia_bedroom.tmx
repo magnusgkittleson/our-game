@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="38" nextobjectid="17">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="38" nextobjectid="19">
  <editorsettings>
   <export target="dacia_bedroom.json" format="json"/>
  </editorsettings>
@@ -42,7 +42,7 @@
  <tileset firstgid="18773" name="gym" tilewidth="32" tileheight="32" tilecount="528" columns="16">
   <image source="../tilesets/gym.png" width="512" height="1056"/>
  </tileset>
- <layer id="17" name="Floor" width="15" height="10">
+ <layer id="17" name="floor" width="15" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -70,7 +70,7 @@
 0,3582,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="18" name="Walls" width="15" height="10">
+ <layer id="18" name="walls" width="15" height="10">
   <data encoding="csv">
 9891,10120,10120,10120,10120,10120,10120,10120,10120,10120,10120,10120,10120,10120,9970,
 10043,10197,10197,10197,10197,10197,10197,10197,10197,10197,10197,10197,10197,10197,10046,
@@ -84,7 +84,7 @@
 10119,0,0,0,0,0,0,1073753490,1073753490,0,0,0,0,0,10122
 </data>
  </layer>
- <layer id="34" name="Touches" width="15" height="10">
+ <layer id="34" name="touches" width="15" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -98,7 +98,7 @@
 0,0,0,0,0,0,0,0,0,0,2433,2434,2435,0,0
 </data>
  </layer>
- <layer id="20" name="On Floor" width="15" height="10">
+ <layer id="20" name="on_floor" width="15" height="10">
   <data encoding="csv">
 0,0,0,1204,1205,1206,1275,1276,14380,0,0,0,12821,12822,0,
 0,0,0,1220,1221,1222,1291,1292,14396,0,0,12809,12837,12838,0,
@@ -112,7 +112,7 @@
 0,2857,2859,2859,2859,2858,0,0,0,0,2433,2434,2435,0,0
 </data>
  </layer>
- <layer id="32" name="On Rugs" width="15" height="10">
+ <layer id="32" name="on_rugs" width="15" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,12807,12808,0,0,0,983,984,0,0,0,0,0,0,0,
@@ -126,7 +126,7 @@
 0,0,0,0,0,0,0,0,0,0,0,12860,12861,12862,0
 </data>
  </layer>
- <layer id="36" name="desk work" width="15" height="10">
+ <layer id="36" name="desk" width="15" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,3005,0,0,0,0,0,0,0,0,0,
@@ -140,7 +140,7 @@
 0,0,0,0,13716,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="26" name="On Tables" width="15" height="10">
+ <layer id="26" name="on_tables" width="15" height="10">
   <data encoding="csv">
 0,12422,12423,0,0,0,0,0,0,0,0,0,0,0,0,
 0,12438,12439,0,0,0,0,0,0,0,0,19298,0,0,0,
@@ -154,7 +154,7 @@
 0,0,0,0,0,0,0,0,0,0,0,17697,17698,0,0
 </data>
  </layer>
- <layer id="19" name="On Walls" width="15" height="10">
+ <layer id="19" name="on_walls" width="15" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,12873,12874,0,0,0,0,
 0,0,0,0,0,0,0,0,0,12889,12890,0,0,0,0,
@@ -168,7 +168,7 @@
 0,13608,13609,13610,13611,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="23" name="Top" width="15" height="10">
+ <layer id="23" name="top" width="15" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -182,7 +182,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="27" name="Collision" width="15" height="10" visible="0">
+ <layer id="27" name="collision" width="15" height="10" visible="0">
   <data encoding="csv">
 11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,
 11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,11797,
@@ -196,7 +196,7 @@
 11797,11797,11797,11797,11797,11797,11797,0,0,0,0,11797,11797,11797,11797
 </data>
  </layer>
- <objectgroup id="28" name="objects" visible="0">
+ <objectgroup id="28" name="objects">
   <object id="1" name="player_spawn" x="243.333" y="262.667"/>
   <object id="3" name="door_to_apartment" x="224" y="298.667" width="62.6667" height="20.6667">
    <properties>
@@ -218,8 +218,9 @@
   </object>
   <object id="14" name="spellbook" x="314.667" y="122" width="38" height="50"/>
   <object id="15" name="radio" x="344.667" y="41.3333" width="38.6667" height="44.6667"/>
+  <object id="18" name="kitty" x="131" y="102.333" width="59.3333" height="54"/>
  </objectgroup>
- <objectgroup id="31" name="collision_objects" visible="0">
+ <objectgroup id="31" name="collision_objects">
   <object id="11" name="collision1" x="287.333" y="311.333" width="159.333" height="8.66667"/>
   <object id="12" name="collision2" x="352" y="117.333" width="62.6667" height="25.3333"/>
   <object id="13" name="collision3" x="289.333" y="63.3333" width="158" height="16.6667"/>
