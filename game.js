@@ -688,8 +688,8 @@ const config = {
     scene: [ApartmentScene, BedroomScene],
     scale: {
         mode: Phaser.Scale.NONE,
-        width: 320,
-        height: 240
+        width: 480,
+        height: 360
     },
     backgroundColor: '#000000',
     render: {
@@ -709,8 +709,8 @@ function resizeGame() {
         const containerHeight = screenFrame.clientHeight;
         
         // Calculate the largest integer scale that fits
-        const scaleX = Math.floor(containerWidth / 320);
-        const scaleY = Math.floor(containerHeight / 240);
+        const scaleX = Math.floor(containerWidth / 480);
+        const scaleY = Math.floor(containerHeight / 360);
         const scale = Math.max(1, Math.min(scaleX, scaleY));
         
         // Apply CSS transform
@@ -718,8 +718,8 @@ function resizeGame() {
         canvas.style.transformOrigin = 'top left';
         
         // Center it
-        const scaledWidth = 320 * scale;
-        const scaledHeight = 240 * scale;
+        const scaledWidth = 480 * scale;
+        const scaledHeight = 360 * scale;
         canvas.style.marginLeft = Math.floor((containerWidth - scaledWidth) / 2) + 'px';
         canvas.style.marginTop = Math.floor((containerHeight - scaledHeight) / 2) + 'px';
     }
