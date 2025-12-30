@@ -687,16 +687,11 @@ const config = {
     },
     scene: [ApartmentScene, BedroomScene],
     scale: {
-        mode: Phaser.Scale.NONE,
+        mode: Phaser.Scale.NONE,  // No automatic scaling
         width: 640,
         height: 480
     },
-    backgroundColor: '#000000',
-    render: {
-        pixelArt: true,
-        antialias: false,
-        roundPixels: true
-    }
+    backgroundColor: '#000000'
 };
 
 const game = new Phaser.Game(config);
