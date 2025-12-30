@@ -349,17 +349,19 @@ class BedroomScene extends Phaser.Scene {
         ];
         
         // Create layers explicitly
-        const floorLayer = map.createLayer('Floor', allTilesets, 0, 0);
-        const wallsLayer = map.createLayer('Walls', allTilesets, 0, 0);
-        const onFloorLayer = map.createLayer('On Floor', allTilesets, 0, 0);
-        const tileLayer6 = map.createLayer('Tile Layer 6', allTilesets, 0, 0);
-        const onWallsLayer = map.createLayer('On Walls', allTilesets, 0, 0);
-        const upLayer = map.createLayer('up', allTilesets, 0, 0);
-        const collisionLayer = map.createLayer('Collision', allTilesets, 0, 0);
+        const floorLayer = map.createLayer('floor', allTilesets, 0, 0);
+        const shadowsLayer = map.createLayer('shadows', allTilesets, 0, 0);
+        const wallsLayer = map.createLayer('walls', allTilesets, 0, 0);
+        const touchesLayer = map.createLayer('touches', allTilesets, 0, 0);
+        const onFloorLayer = map.createLayer('on_floor', allTilesets, 0, 0);
+        const onRugsLayer = map.createLayer('on_rugs', allTilesets, 0, 0);
+        const deskLayer = map.createLayer('desk', allTilesets, 0, 0);
+        const onTablesLayer = map.createLayer('on_tables', allTilesets, 0, 0);
+        const onWallsLayer = map.createLayer('on_walls', allTilesets, 0, 0);
+        const topLayer = map.createLayer('top', allTilesets, 0, 0);
+        const collisionLayer = map.createLayer('collision', allTilesets, 0, 0);
         
-        console.log('Bedroom layers created');
-        
-        // Hide and set collision
+        // Hide and set collision (note: lowercase 'collision' now)
         if (collisionLayer) {
             collisionLayer.setVisible(false);
             collisionLayer.setCollisionByExclusion([-1]);
