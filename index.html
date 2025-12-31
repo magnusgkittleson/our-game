@@ -6,6 +6,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#8b7ab8">
+    <link rel="manifest" href="manifest.json">
     <title>Game for Dacia</title>
     <style>
         * {
@@ -105,7 +107,7 @@
             }
             
             .portrait-text {
-                font-size: 9px;
+                font-size: 10px;
                 color: rgba(255, 255, 255, 0.5);
                 letter-spacing: 1.5px;
             }
@@ -141,8 +143,8 @@
             
             #controls {
                 display: flex;
-                gap: 40px;
-                padding: 10px 20px 40px 20px;
+                gap: 60px;
+                padding: 10px 10px 40px 20px;
                 order: 4;
                 justify-content: center;
                 align-items: center;
@@ -180,14 +182,14 @@
             
             /* Portrait D-pad size - 5% smaller and shifted left */
             #dpad {
-                width: 228px;
-                height: 228px;
+                width: 220px;
+                height: 220px;
                 margin-left: -10px;
             }
             
             .dpad-btn {
-                width: 76px;
-                height: 76px;
+                width: 70px;
+                height: 70px;
                 font-size: 25px;
             }
             
@@ -197,10 +199,10 @@
             #btn-right { top: 76px; right: 0; }
             
             #dpad::before {
-                width: 61px;
-                height: 61px;
-                top: 83.5px;
-                left: 83.5px;
+                width: 50px;
+                height: 50px;
+                top: 85px;
+                left: 85px;
             }
             
             /* Portrait action buttons - 5% smaller and shifted right */
@@ -298,7 +300,7 @@
             /* DS Logo - moved next to LED */
             .ds-logo {
                 position: absolute;
-                bottom: 25px;
+                bottom: 24px;
                 right: 50px;
                 font-size: 10px;
                 color: rgba(255, 255, 255, 0.4);
@@ -322,7 +324,7 @@
             
             @keyframes pulse {
                 0%, 100% { opacity: 1; }
-                50% { opacity: 0.6; }
+                50% { opacity: 0.2; }
             }
             
             #controls {
@@ -343,29 +345,29 @@
             
             /* Landscape D-pad - BIGGER and raised more */
             #dpad {
-                width: 170px;
-                height: 170px;
+                width: 176px;
+                height: 176px;
                 margin-bottom: 35px;
             }
             
             .dpad-btn {
                 width: 56px;
                 height: 56px;
-                font-size: 24px;
+                font-size: 20px;
                 background: rgba(224, 224, 224, 0.9);
                 border: 2px solid rgba(138, 138, 138, 0.9);
             }
             
-            #btn-up { top: 0; left: 57px; }
-            #btn-down { bottom: 0; left: 57px; }
+            #btn-up { top: 0; left: 59px; }
+            #btn-down { bottom: 0; left: 59px; }
             #btn-left { top: 57px; left: 0; }
             #btn-right { top: 57px; right: 0; }
             
             #dpad::before {
-                width: 46px;
-                height: 46px;
-                top: 62px;
-                left: 62px;
+                width: 40px;
+                height: 40px;
+                top: 67px;
+                left: 67px;
             }
             
             /* Landscape action buttons - 10% larger and shifted slightly right */
@@ -493,7 +495,7 @@
         </div>
         
         <!-- DS Logo -->
-        <div class="ds-logo">DACIA DS</div>
+        <div class="ds-logo">DACIA'S DS</div>
         
         <!-- Power LED -->
         <div class="power-led"></div>
