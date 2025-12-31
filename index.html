@@ -430,7 +430,7 @@
         </div>
         
         <!-- DS Logo -->
-        <div class="ds-logo">DACIA'S DS</div>
+        <div class="ds-logo">DACIA DS</div>
         
         <!-- Power LED -->
         <div class="power-led"></div>
@@ -515,6 +515,35 @@
         
         // Make controls available to Phaser
         window.touchControls = controls;
+        
+        // Request fullscreen on Android
+        function enterFullscreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => {
+                    console.log('Fullscreen request failed:', err);
+                });
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+        
+        // Try to enter fullscreen on first user interaction
+        let hasTriedFullscreen = false;
+        document.addEventListener('touchstart', function() {
+            if (!hasTriedFullscreen) {
+                hasTriedFullscreen = true;
+                enterFullscreen();
+            }
+        }, { once: true });
+        
+        // Also try when the page loads (for PWA)
+        if (window.matchMedia('(display-mode: fullscreen)').matches || 
+            window.matchMedia('(display-mode: standalone)').matches) {
+            setTimeout(enterFullscreen, 100);
+        }
     </script>
 </body>
 </html>
