@@ -6,8 +6,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#8b7ab8">
-    <link rel="manifest" href="manifest.json">
     <title>Game for Dacia</title>
     <style>
         * {
@@ -76,7 +74,7 @@
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
-                margin: 20px auto 0;
+                margin: 50px auto 0;
                 position: relative;
             }
             
@@ -93,7 +91,7 @@
                 align-items: center;
                 justify-content: center;
                 gap: 12px;
-                margin: 30px auto 5px;
+                margin: 60px auto 5px;
                 position: relative;
             }
             
@@ -107,7 +105,7 @@
             }
             
             .portrait-text {
-                font-size: 10px;
+                font-size: 9px;
                 color: rgba(255, 255, 255, 0.5);
                 letter-spacing: 1.5px;
             }
@@ -115,8 +113,8 @@
             /* Portrait speaker - circular dots between branding and controls */
             .portrait-speaker {
                 order: 3;
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
                 margin: 35px auto;
                 display: flex;
                 align-items: center;
@@ -143,8 +141,8 @@
             
             #controls {
                 display: flex;
-                gap: 60px;
-                padding: 10px 10px 40px 20px;
+                gap: 40px;
+                padding: 10px 20px 40px 20px;
                 order: 4;
                 justify-content: center;
                 align-items: center;
@@ -161,55 +159,55 @@
                 border-radius: 50%;
             }
             
-            /* Arrange dots in circles - scaled up */
-            .portrait-speaker-dot:nth-child(1) { transform: translate(0, -27px); }
-            .portrait-speaker-dot:nth-child(2) { transform: translate(19px, -19px); }
-            .portrait-speaker-dot:nth-child(3) { transform: translate(27px, 0); }
-            .portrait-speaker-dot:nth-child(4) { transform: translate(19px, 19px); }
-            .portrait-speaker-dot:nth-child(5) { transform: translate(0, 27px); }
-            .portrait-speaker-dot:nth-child(6) { transform: translate(-19px, 19px); }
-            .portrait-speaker-dot:nth-child(7) { transform: translate(-27px, 0); }
-            .portrait-speaker-dot:nth-child(8) { transform: translate(-19px, -19px); }
-            .portrait-speaker-dot:nth-child(9) { transform: translate(0, -14px); }
-            .portrait-speaker-dot:nth-child(10) { transform: translate(10px, -10px); }
-            .portrait-speaker-dot:nth-child(11) { transform: translate(14px, 0); }
-            .portrait-speaker-dot:nth-child(12) { transform: translate(10px, 10px); }
-            .portrait-speaker-dot:nth-child(13) { transform: translate(0, 14px); }
-            .portrait-speaker-dot:nth-child(14) { transform: translate(-10px, 10px); }
-            .portrait-speaker-dot:nth-child(15) { transform: translate(-14px, 0); }
-            .portrait-speaker-dot:nth-child(16) { transform: translate(-10px, -10px); }
+            /* Arrange dots in circles - scaled up for 100px speaker */
+            .portrait-speaker-dot:nth-child(1) { transform: translate(0, -34px); }
+            .portrait-speaker-dot:nth-child(2) { transform: translate(24px, -24px); }
+            .portrait-speaker-dot:nth-child(3) { transform: translate(34px, 0); }
+            .portrait-speaker-dot:nth-child(4) { transform: translate(24px, 24px); }
+            .portrait-speaker-dot:nth-child(5) { transform: translate(0, 34px); }
+            .portrait-speaker-dot:nth-child(6) { transform: translate(-24px, 24px); }
+            .portrait-speaker-dot:nth-child(7) { transform: translate(-34px, 0); }
+            .portrait-speaker-dot:nth-child(8) { transform: translate(-24px, -24px); }
+            .portrait-speaker-dot:nth-child(9) { transform: translate(0, -18px); }
+            .portrait-speaker-dot:nth-child(10) { transform: translate(13px, -13px); }
+            .portrait-speaker-dot:nth-child(11) { transform: translate(18px, 0); }
+            .portrait-speaker-dot:nth-child(12) { transform: translate(13px, 13px); }
+            .portrait-speaker-dot:nth-child(13) { transform: translate(0, 18px); }
+            .portrait-speaker-dot:nth-child(14) { transform: translate(-13px, 13px); }
+            .portrait-speaker-dot:nth-child(15) { transform: translate(-18px, 0); }
+            .portrait-speaker-dot:nth-child(16) { transform: translate(-13px, -13px); }
             .portrait-speaker-dot:nth-child(17) { transform: translate(0, 0); }
             
             /* Portrait D-pad size - 5% smaller and shifted left */
             #dpad {
-                width: 220px;
-                height: 220px;
-                margin-left: -10px;
+                width: 233px;
+                height: 233px;
+                margin-left: -13px;
             }
             
             .dpad-btn {
-                width: 70px;
-                height: 70px;
+                width: 76px;
+                height: 76px;
                 font-size: 25px;
             }
             
-            #btn-up { top: 0; left: 76px; }
-            #btn-down { bottom: 0; left: 76px; }
-            #btn-left { top: 76px; left: 0; }
-            #btn-right { top: 76px; right: 0; }
+            #btn-up { top: 0; left: 78.5px; }
+            #btn-down { bottom: 0; left: 78.5px; }
+            #btn-left { top: 78.5px; left: 0; }
+            #btn-right { top: 78.5px; right: 0; }
             
             #dpad::before {
-                width: 50px;
-                height: 50px;
-                top: 85px;
-                left: 85px;
+                width: 59px;
+                height: 59px;
+                top: 87px;
+                left: 87px;
             }
             
             /* Portrait action buttons - 5% smaller and shifted right */
             #action-buttons {
                 width: 74px;
                 height: 162px;
-                margin-left: -10px;
+                margin-left: -7px;
                 margin-right: 20px;
             }
             
@@ -300,7 +298,7 @@
             /* DS Logo - moved next to LED */
             .ds-logo {
                 position: absolute;
-                bottom: 24px;
+                bottom: 23px;
                 right: 50px;
                 font-size: 10px;
                 color: rgba(255, 255, 255, 0.4);
@@ -324,7 +322,7 @@
             
             @keyframes pulse {
                 0%, 100% { opacity: 1; }
-                50% { opacity: 0.2; }
+                50% { opacity: 0.3; }
             }
             
             #controls {
@@ -345,29 +343,29 @@
             
             /* Landscape D-pad - BIGGER and raised more */
             #dpad {
-                width: 176px;
-                height: 176px;
+                width: 181px;
+                height: 181px;
                 margin-bottom: 35px;
             }
             
             .dpad-btn {
                 width: 56px;
                 height: 56px;
-                font-size: 20px;
+                font-size: 24px;
                 background: rgba(224, 224, 224, 0.9);
                 border: 2px solid rgba(138, 138, 138, 0.9);
             }
             
-            #btn-up { top: 0; left: 59px; }
-            #btn-down { bottom: 0; left: 59px; }
-            #btn-left { top: 57px; left: 0; }
-            #btn-right { top: 57px; right: 0; }
+            #btn-up { top: 0; left: 62.5px; }
+            #btn-down { bottom: 0; left: 62.5px; }
+            #btn-left { top: 62.5px; left: 0; }
+            #btn-right { top: 62.5px; right: 0; }
             
             #dpad::before {
-                width: 40px;
-                height: 40px;
-                top: 67px;
-                left: 67px;
+                width: 38px;
+                height: 38px;
+                top: 71.5px;
+                left: 71.5px;
             }
             
             /* Landscape action buttons - 10% larger and shifted slightly right */
