@@ -43,6 +43,8 @@
             display: block;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
+            image-rendering: -moz-crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
         }
         
         /* Portrait Mode - GameBoy Style */
@@ -57,7 +59,7 @@
             
             #screen-frame {
                 background: #000000;
-                border: 1px solid #000000;
+                border: 6px solid #1a1a1a;
                 border-radius: 0;
                 border-top: none;
                 border-left: none;
@@ -80,7 +82,7 @@
                 border-radius: 0;
                 width: 100% !important;
                 height: 100% !important;
-                object-fit: fill;
+                object-fit: contain;
                 display: block;
                 margin: 0 auto;
             }
@@ -109,6 +111,12 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
+            }
+            
+            canvas {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain;
             }
             
             #controls {
