@@ -688,8 +688,8 @@ const config = {
     scene: [ApartmentScene, BedroomScene],
     scale: {
         mode: Phaser.Scale.NONE,
-        width: 320,
-        height: 240
+        width: 480,
+        height: 360
     },
     backgroundColor: '#000000',
     pixelArt: true  // Force pixel-perfect rendering

@@ -75,6 +75,37 @@
                 justify-content: center;
                 overflow: hidden;
                 margin: 0 auto;
+                position: relative;
+            }
+            
+            /* GBA-style speaker holes */
+            .speaker {
+                position: absolute;
+                bottom: 15px;
+                display: flex;
+                gap: 6px;
+            }
+            
+            .speaker-left {
+                left: 20px;
+            }
+            
+            .speaker-right {
+                right: 20px;
+            }
+            
+            .speaker-hole {
+                width: 4px;
+                height: 12px;
+                background: #333;
+                border-radius: 2px;
+            }
+            
+            /* Hide DS decorations in portrait */
+            .ds-speaker,
+            .ds-logo,
+            .power-led {
+                display: none;
             }
             
             canvas {
@@ -90,116 +121,264 @@
             #controls {
                 display: flex;
                 gap: 50px;
-                padding: 120px 20px 40px 20px;
+                padding: 80px 20px 40px 20px;
                 order: 2;
                 justify-content: center;
                 align-items: center;
                 flex-shrink: 0;
                 width: 100%;
             }
-        }
-        
-        /* Landscape Mode - Fullscreen with overlay controls */
-        @media (orientation: landscape) {
-            #game-container {
-                background: #000;
+            
+            /* Portrait D-pad size - SMALLER */
+            #dpad {
+                width: 180px;
+                height: 180px;
             }
             
+            .dpad-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            #btn-up { top: 0; left: 60px; }
+            #btn-down { bottom: 0; left: 60px; }
+            #btn-left { top: 60px; left: 0; }
+            #btn-right { top: 60px; right: 0; }
+            
+            #dpad::before {
+                width: 48px;
+                height: 48px;
+                top: 66px;
+                left: 66px;
+            }
+            
+            /* Portrait action buttons - smaller */
+            #action-buttons {
+                width: 130px;
+                height: 90px;
+            }
+            
+            .action-btn {
+                width: 65px;
+                height: 65px;
+                font-size: 22px;
+            }
+        }
+        
+        /* Landscape Mode - Nintendo DS Style */
+        @media (orientation: landscape) {
+            #game-container {
+                background: linear-gradient(145deg, #f0a0c8, #d87aa8);
+            }
+            
+            /* Larger centered screen with DS bezel */
             #screen-frame {
                 position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: auto;
+                height: 96%;
+                max-width: 92%;
+                aspect-ratio: 4/3;
+                background: #1a1a1a;
+                border: 6px solid #e891b8;
+                border-radius: 8px;
+                box-shadow: 
+                    inset 0 0 15px rgba(0,0,0,0.4),
+                    0 0 0 1px #d670a0,
+                    0 6px 15px rgba(0,0,0,0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
             canvas {
                 width: 100% !important;
                 height: 100% !important;
                 object-fit: contain;
+                border-radius: 4px;
+            }
+            
+            /* Hide GBA speakers in landscape */
+            .speaker {
+                display: none;
+            }
+            
+            /* DS Speakers at top */
+            .ds-speaker {
+                position: absolute;
+                top: 20px;
+                display: flex;
+                gap: 3px;
+                z-index: 10;
+            }
+            
+            .ds-speaker-left {
+                left: 30px;
+            }
+            
+            .ds-speaker-right {
+                right: 30px;
+            }
+            
+            .ds-speaker-hole {
+                width: 3px;
+                height: 8px;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 1.5px;
+            }
+            
+            /* DS Logo - moved next to LED */
+            .ds-logo {
+                position: absolute;
+                bottom: 25px;
+                right: 50px;
+                font-size: 10px;
+                color: rgba(255, 255, 255, 0.4);
+                letter-spacing: 2px;
+                z-index: 10;
+            }
+            
+            /* Power LED */
+            .power-led {
+                position: absolute;
+                bottom: 25px;
+                right: 30px;
+                width: 8px;
+                height: 8px;
+                background: #4ade80;
+                border-radius: 50%;
+                box-shadow: 0 0 10px #4ade80;
+                animation: pulse 2s infinite;
+                z-index: 10;
+            }
+            
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.6; }
             }
             
             #controls {
                 position: absolute;
-                bottom: 20px;
+                bottom: 15px;
                 left: 0;
                 right: 0;
                 display: flex;
                 justify-content: space-between;
-                padding: 0 30px;
+                padding: 0 10px;
                 pointer-events: none;
+                z-index: 5;
             }
             
             #controls > * {
                 pointer-events: all;
+            }
+            
+            /* Landscape D-pad - BIGGER and raised more */
+            #dpad {
+                width: 170px;
+                height: 170px;
+                margin-bottom: 35px;
+            }
+            
+            .dpad-btn {
+                width: 56px;
+                height: 56px;
+                font-size: 24px;
+                background: rgba(224, 224, 224, 0.9);
+                border: 2px solid rgba(138, 138, 138, 0.9);
+            }
+            
+            #btn-up { top: 0; left: 57px; }
+            #btn-down { bottom: 0; left: 57px; }
+            #btn-left { top: 57px; left: 0; }
+            #btn-right { top: 57px; right: 0; }
+            
+            #dpad::before {
+                width: 46px;
+                height: 46px;
+                top: 62px;
+                left: 62px;
+            }
+            
+            /* Landscape action buttons - 10% larger and shifted slightly right */
+            #action-buttons {
+                width: 149px;
+                height: 99px;
+                margin-right: 5px;
+            }
+            
+            .action-btn {
+                width: 66px;
+                height: 66px;
+                font-size: 24px;
+                background: rgba(224, 224, 224, 0.9);
+                border: 3px solid rgba(138, 138, 138, 0.9);
+                color: rgb(156, 156, 156);
+            }
+            
+            .dpad-btn:active {
+                background: rgba(180, 180, 200, 1);
+                transform: scale(0.95);
+            }
+            
+            .action-btn:active {
+                background: rgba(180, 180, 200, 1);
+                transform: translateY(2px);
             }
         }
         
         /* D-Pad */
         #dpad {
             position: relative;
-            width: 250px;
-            height: 250px;
         }
         
         .dpad-btn {
             position: absolute;
-            width: 82px;
-            height: 82px;
-            background: rgba(50, 50, 50, 0.7);
-            border: 3px solid rgba(100, 100, 100, 0.8);
+            background: rgba(224, 224, 224, 1);
+            border: 2px solid rgba(138, 138, 138, 1);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(200, 200, 200, 0.9);
-            font-size: 36px;
+            color: rgb(156, 156, 156);
             cursor: pointer;
             user-select: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             transition: all 0.1s;
         }
         
         .dpad-btn:active {
-            background: rgba(80, 80, 120, 0.9);
+            background: rgba(180, 180, 200, 1);
             transform: scale(0.95);
         }
-        
-        #btn-up { top: 0; left: 84px; }
-        #btn-down { bottom: 0; left: 84px; }
-        #btn-left { top: 84px; left: 0; }
-        #btn-right { top: 84px; right: 0; }
         
         /* Center circle for D-pad */
         #dpad::before {
             content: '';
             position: absolute;
-            width: 65px;
-            height: 65px;
-            background: rgba(30, 30, 30, 0.6);
-            border-radius: 50%;
-            top: 92.5px;
-            left: 92.5px;
+            background: rgba(224, 224, 224, 1);
+            border-radius: 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             z-index: -1;
         }
         
         /* Action Buttons */
         #action-buttons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
+            position: relative;
         }
         
         .action-btn {
-            width: 90px;
-            height: 90px;
-            background: rgba(180, 50, 50, 0.7);
-            border: 4px solid rgba(200, 80, 80, 0.9);
+            position: absolute;
+            background: rgba(224, 224, 224, 1);
+            border: 3px solid rgba(138, 138, 138, 1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 28px;
+            color: rgb(156, 156, 156);
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -207,46 +386,73 @@
         }
         
         .action-btn:active {
-            background: rgba(220, 80, 80, 0.9);
+            background: rgba(180, 180, 200, 1);
             transform: translateY(2px);
             box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
-        /* Landscape specific adjustments */
-        @media (orientation: landscape) {
-            .dpad-btn, .action-btn {
-                background: rgba(50, 50, 50, 0.5);
-                border-color: rgba(100, 100, 100, 0.6);
-            }
-            
-            .dpad-btn:active {
-                background: rgba(80, 80, 120, 0.7);
-            }
-            
-            .action-btn {
-                background: rgba(180, 50, 50, 0.5);
-                border-color: rgba(200, 80, 80, 0.7);
-            }
-            
-            .action-btn:active {
-                background: rgba(220, 80, 80, 0.7);
-            }
-            
-            #btn-b {
-                background: rgba(100, 100, 180, 0.5);
-                border-color: rgba(120, 120, 200, 0.7);
-            }
-            
-            #btn-b:active {
-                background: rgba(140, 140, 220, 0.7);
-            }
+        /* GBA diagonal layout */
+        #btn-a {
+            top: 0;
+            right: 0;
+        }
+        
+        #btn-b {
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
 <body>
     <div id="game-container">
+        <!-- DS-style speakers (landscape only) -->
+        <div class="ds-speaker ds-speaker-left">
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+        </div>
+        <div class="ds-speaker ds-speaker-right">
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+            <div class="ds-speaker-hole"></div>
+        </div>
+        
+        <!-- DS Logo -->
+        <div class="ds-logo">DACIA'S DS</div>
+        
+        <!-- Power LED -->
+        <div class="power-led"></div>
+        
         <div id="screen-frame">
             <!-- Phaser canvas will be inserted here -->
+            
+            <!-- GBA-style speaker holes (portrait only) -->
+            <div class="speaker speaker-left">
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+            </div>
+            <div class="speaker speaker-right">
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+                <div class="speaker-hole"></div>
+            </div>
         </div>
         
         <div id="controls">
@@ -260,6 +466,7 @@
             
             <!-- Action Buttons -->
             <div id="action-buttons">
+                <div class="action-btn" id="btn-b">B</div>
                 <div class="action-btn" id="btn-a">A</div>
             </div>
         </div>
@@ -302,6 +509,7 @@
         setupTouchButton('btn-left', 'left');
         setupTouchButton('btn-right', 'right');
         setupTouchButton('btn-a', 'a');
+        setupTouchButton('btn-b', 'b');
         
         // Make controls available to Phaser
         window.touchControls = controls;
