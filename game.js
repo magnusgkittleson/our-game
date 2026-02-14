@@ -3379,23 +3379,31 @@ class BedroomScene extends Phaser.Scene {
     walkRightThenToNote(note) {
         console.log('Walking right from bed');
         
-        // Walk right for about 70 pixels (reduced to avoid collision)
         const targetX = this.player.x + 70;
+        let stuckFrames = 0;
+        let lastX = this.player.x;
+        let totalFrames = 0;
         
         this.player.setVelocityX(80);
         this.player.anims.play('walk-right', true);
         
-        // Check every frame if we've walked 70 pixels right
         const checkRightWalk = () => {
-            if (this.player.x >= targetX) {
-                // Stop walking right
+            totalFrames++;
+            
+            if (this.player.x >= targetX || stuckFrames > 30 || totalFrames > 200) {
                 this.player.setVelocity(0);
                 this.events.off('update', checkRightWalk);
-                
-                // Now walk to note
                 console.log('Walked right, now walking to note');
                 this.walkToNote(note.x, note.y);
+                return;
             }
+            
+            if (Math.abs(this.player.x - lastX) < 0.5) {
+                stuckFrames++;
+            } else {
+                stuckFrames = 0;
+            }
+            lastX = this.player.x;
         };
         
         this.events.on('update', checkRightWalk);
@@ -3404,53 +3412,64 @@ class BedroomScene extends Phaser.Scene {
     walkToNote(targetX, targetY) {
         console.log('Walking to note at:', targetX, targetY);
         
-        // Calculate direction to note
-        const dx = targetX - this.player.x;
-        const dy = targetY - this.player.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const distance = Math.sqrt((targetX - this.player.x) ** 2 + (targetY - this.player.y) ** 2);
         
         if (distance < 10) {
-            // Already there
             this.arriveAtNote();
             return;
         }
         
-        // Normalize direction
-        const speed = 80;
-        const vx = (dx / distance) * speed;
-        const vy = (dy / distance) * speed;
+        let lastX = this.player.x;
+        let lastY = this.player.y;
+        let stuckFrames = 0;
+        let totalFrames = 0;
         
-        // Set velocity and play walk animation
-        this.player.setVelocity(vx, vy);
-        
-        // Determine which direction animation to play
-        if (Math.abs(dx) > Math.abs(dy)) {
-            // Moving more horizontally
-            if (dx > 0) {
-                this.player.anims.play('walk-right', true); // Right
-            } else {
-                this.player.anims.play('walk-left', true); // Left
-            }
-        } else {
-            // Moving more vertically
-            if (dy > 0) {
-                this.player.anims.play('walk-down', true); // Down
-            } else {
-                this.player.anims.play('walk-up', true); // Up
-            }
-        }
-        
-        // Check every frame if we've arrived
+        // Check every frame - recalculate direction to handle collisions
         const checkArrival = () => {
+            totalFrames++;
+            
             const currentDx = targetX - this.player.x;
             const currentDy = targetY - this.player.y;
             const currentDistance = Math.sqrt(currentDx * currentDx + currentDy * currentDy);
             
-            if (currentDistance < 15) {
+            if (currentDistance < 20) {
                 // Arrived!
                 this.player.setVelocity(0);
                 this.events.off('update', checkArrival);
                 this.arriveAtNote();
+                return;
+            }
+            
+            // Stuck detection - if barely moved in 30 frames, skip ahead
+            if (Math.abs(this.player.x - lastX) < 0.5 && Math.abs(this.player.y - lastY) < 0.5) {
+                stuckFrames++;
+            } else {
+                stuckFrames = 0;
+            }
+            lastX = this.player.x;
+            lastY = this.player.y;
+            
+            // Safety: if stuck for 30 frames or walking for 300+ frames, just arrive
+            if (stuckFrames > 30 || totalFrames > 300) {
+                console.log('Walk to note: unstuck/timeout, teleporting to note');
+                this.player.setVelocity(0);
+                this.player.setPosition(targetX, targetY);
+                this.events.off('update', checkArrival);
+                this.arriveAtNote();
+                return;
+            }
+            
+            // Recalculate direction each frame to navigate around obstacles
+            const speed = 80;
+            const vx = (currentDx / currentDistance) * speed;
+            const vy = (currentDy / currentDistance) * speed;
+            this.player.setVelocity(vx, vy);
+            
+            // Update walk animation based on current direction
+            if (Math.abs(currentDx) > Math.abs(currentDy)) {
+                this.player.anims.play(currentDx > 0 ? 'walk-right' : 'walk-left', true);
+            } else {
+                this.player.anims.play(currentDy > 0 ? 'walk-down' : 'walk-up', true);
             }
         };
         
@@ -7386,17 +7405,17 @@ class ConnorRoomScene2 extends Phaser.Scene {
         else if (this.nearConnor && aPressed) {
             this.buttonSound.play();
             this.faceNPCTowardsPlayer(this.connorNPC, 'connor');
-            this.showNPCDialogue('Uhhh im kinda in the middle of something dude..', 'connor', this.connorNPC, 'connor');
+            this.showNPCDialogue('HNNNGGG!! *headbangs violently*', 'connor', this.connorNPC, 'connor');
         }
         else if (this.nearChris && aPressed) {
             this.buttonSound.play();
             this.faceNPCTowardsPlayer(this.chrisNPC, 'chris');
-            this.showNPCDialogue("Taught this kid everything he knows.", 'chris', this.chrisNPC, 'chris');
+            this.showNPCDialogue("What's up! Welcome to the party!", 'chris', this.chrisNPC, 'chris');
         }
         else if (this.nearSkeleton && aPressed) {
             this.buttonSound.play();
             this.faceNPCTowardsPlayer(this.skeletonNPC, 'skeleton');
-            this.showNPCDialogue('Riiiiiide that rail...', 'skeleton', this.skeletonNPC, 'skeleton');
+            this.showNPCDialogue('...', 'skeleton', this.skeletonNPC, 'skeleton');
         }
         
         // Movement

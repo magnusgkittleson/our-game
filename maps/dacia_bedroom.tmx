@@ -272,7 +272,7 @@
   <object id="44" name="laundry" x="413" y="199.167" width="33.5" height="43.3333"/>
   <object id="50" name="spellzone" x="359.5" y="147" width="47.5" height="41"/>
  </objectgroup>
- <objectgroup id="31" name="collision_objects" visible="0">
+ <objectgroup id="31" name="collision_objects">
   <object id="11" name="collision1" x="289.333" y="346" width="159.333" height="4.66667"/>
   <object id="12" name="collision2" x="352" y="120.666" width="13.3334" height="22"/>
   <object id="13" name="collision3" x="289.333" y="63.3333" width="158" height="9.33337"/>
@@ -281,7 +281,7 @@
   <object id="24" name="collision9" x="32.6667" y="63.3333" width="64" height="8.3333"/>
   <object id="27" name="collision12" x="363.333" y="244.667" width="74.3334" height="58"/>
   <object id="31" x="425" y="130" width="20.3333" height="11.6667"/>
-  <object id="32" x="324.333" y="128" width="23.3333" height="24.3333"/>
+  <object id="32" x="327.333" y="128" width="20.3333" height="24.3333"/>
   <object id="36" x="191" y="344" width="35.5" height="7.5"/>
   <object id="45" name="bin" x="416" y="208.333" width="30.3333" height="18"/>
   <object id="47" x="196" y="112" width="56.5" height="16"/>
