@@ -6,8 +6,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#8b7ab8">
-    <link rel="manifest" href="manifest.json">
     <title>Game for Dacia</title>
     <style>
         * {
@@ -76,7 +74,7 @@
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
-                margin: 20px auto 0;
+                margin: 50px auto 0;
                 position: relative;
             }
             
@@ -93,7 +91,7 @@
                 align-items: center;
                 justify-content: center;
                 gap: 12px;
-                margin: 30px auto 5px;
+                margin: 60px auto 5px;
                 position: relative;
             }
             
@@ -107,7 +105,7 @@
             }
             
             .portrait-text {
-                font-size: 10px;
+                font-size: 9px;
                 color: rgba(255, 255, 255, 0.5);
                 letter-spacing: 1.5px;
             }
@@ -115,8 +113,8 @@
             /* Portrait speaker - circular dots between branding and controls */
             .portrait-speaker {
                 order: 3;
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
                 margin: 35px auto;
                 display: flex;
                 align-items: center;
@@ -143,8 +141,8 @@
             
             #controls {
                 display: flex;
-                gap: 60px;
-                padding: 10px 10px 40px 20px;
+                gap: 40px;
+                padding: 10px 20px 40px 20px;
                 order: 4;
                 justify-content: center;
                 align-items: center;
@@ -161,55 +159,55 @@
                 border-radius: 50%;
             }
             
-            /* Arrange dots in circles - scaled up */
-            .portrait-speaker-dot:nth-child(1) { transform: translate(0, -27px); }
-            .portrait-speaker-dot:nth-child(2) { transform: translate(19px, -19px); }
-            .portrait-speaker-dot:nth-child(3) { transform: translate(27px, 0); }
-            .portrait-speaker-dot:nth-child(4) { transform: translate(19px, 19px); }
-            .portrait-speaker-dot:nth-child(5) { transform: translate(0, 27px); }
-            .portrait-speaker-dot:nth-child(6) { transform: translate(-19px, 19px); }
-            .portrait-speaker-dot:nth-child(7) { transform: translate(-27px, 0); }
-            .portrait-speaker-dot:nth-child(8) { transform: translate(-19px, -19px); }
-            .portrait-speaker-dot:nth-child(9) { transform: translate(0, -14px); }
-            .portrait-speaker-dot:nth-child(10) { transform: translate(10px, -10px); }
-            .portrait-speaker-dot:nth-child(11) { transform: translate(14px, 0); }
-            .portrait-speaker-dot:nth-child(12) { transform: translate(10px, 10px); }
-            .portrait-speaker-dot:nth-child(13) { transform: translate(0, 14px); }
-            .portrait-speaker-dot:nth-child(14) { transform: translate(-10px, 10px); }
-            .portrait-speaker-dot:nth-child(15) { transform: translate(-14px, 0); }
-            .portrait-speaker-dot:nth-child(16) { transform: translate(-10px, -10px); }
+            /* Arrange dots in circles - scaled up for 100px speaker */
+            .portrait-speaker-dot:nth-child(1) { transform: translate(0, -34px); }
+            .portrait-speaker-dot:nth-child(2) { transform: translate(24px, -24px); }
+            .portrait-speaker-dot:nth-child(3) { transform: translate(34px, 0); }
+            .portrait-speaker-dot:nth-child(4) { transform: translate(24px, 24px); }
+            .portrait-speaker-dot:nth-child(5) { transform: translate(0, 34px); }
+            .portrait-speaker-dot:nth-child(6) { transform: translate(-24px, 24px); }
+            .portrait-speaker-dot:nth-child(7) { transform: translate(-34px, 0); }
+            .portrait-speaker-dot:nth-child(8) { transform: translate(-24px, -24px); }
+            .portrait-speaker-dot:nth-child(9) { transform: translate(0, -18px); }
+            .portrait-speaker-dot:nth-child(10) { transform: translate(13px, -13px); }
+            .portrait-speaker-dot:nth-child(11) { transform: translate(18px, 0); }
+            .portrait-speaker-dot:nth-child(12) { transform: translate(13px, 13px); }
+            .portrait-speaker-dot:nth-child(13) { transform: translate(0, 18px); }
+            .portrait-speaker-dot:nth-child(14) { transform: translate(-13px, 13px); }
+            .portrait-speaker-dot:nth-child(15) { transform: translate(-18px, 0); }
+            .portrait-speaker-dot:nth-child(16) { transform: translate(-13px, -13px); }
             .portrait-speaker-dot:nth-child(17) { transform: translate(0, 0); }
             
             /* Portrait D-pad size - 5% smaller and shifted left */
             #dpad {
-                width: 220px;
-                height: 220px;
-                margin-left: -10px;
+                width: 233px;
+                height: 233px;
+                margin-left: -13px;
             }
             
             .dpad-btn {
-                width: 70px;
-                height: 70px;
+                width: 76px;
+                height: 76px;
                 font-size: 25px;
             }
             
-            #btn-up { top: 0; left: 76px; }
-            #btn-down { bottom: 0; left: 76px; }
-            #btn-left { top: 76px; left: 0; }
-            #btn-right { top: 76px; right: 0; }
+            #btn-up { top: 0; left: 78.5px; }
+            #btn-down { bottom: 0; left: 78.5px; }
+            #btn-left { top: 78.5px; left: 0; }
+            #btn-right { top: 78.5px; right: 0; }
             
             #dpad::before {
-                width: 50px;
-                height: 50px;
-                top: 85px;
-                left: 85px;
+                width: 59px;
+                height: 59px;
+                top: 87px;
+                left: 87px;
             }
             
             /* Portrait action buttons - 5% smaller and shifted right */
             #action-buttons {
                 width: 74px;
                 height: 162px;
-                margin-left: -10px;
+                margin-left: -7px;
                 margin-right: 20px;
             }
             
@@ -300,7 +298,7 @@
             /* DS Logo - moved next to LED */
             .ds-logo {
                 position: absolute;
-                bottom: 24px;
+                bottom: 23px;
                 right: 50px;
                 font-size: 10px;
                 color: rgba(255, 255, 255, 0.4);
@@ -324,7 +322,7 @@
             
             @keyframes pulse {
                 0%, 100% { opacity: 1; }
-                50% { opacity: 0.2; }
+                50% { opacity: 0.3; }
             }
             
             #controls {
@@ -345,29 +343,29 @@
             
             /* Landscape D-pad - BIGGER and raised more */
             #dpad {
-                width: 176px;
-                height: 176px;
+                width: 181px;
+                height: 181px;
                 margin-bottom: 35px;
             }
             
             .dpad-btn {
                 width: 56px;
                 height: 56px;
-                font-size: 20px;
+                font-size: 24px;
                 background: rgba(224, 224, 224, 0.9);
                 border: 2px solid rgba(138, 138, 138, 0.9);
             }
             
-            #btn-up { top: 0; left: 59px; }
-            #btn-down { bottom: 0; left: 59px; }
-            #btn-left { top: 57px; left: 0; }
-            #btn-right { top: 57px; right: 0; }
+            #btn-up { top: 0; left: 62.5px; }
+            #btn-down { bottom: 0; left: 62.5px; }
+            #btn-left { top: 62.5px; left: 0; }
+            #btn-right { top: 62.5px; right: 0; }
             
             #dpad::before {
-                width: 40px;
-                height: 40px;
-                top: 67px;
-                left: 67px;
+                width: 38px;
+                height: 38px;
+                top: 71.5px;
+                left: 71.5px;
             }
             
             /* Landscape action buttons - 10% larger and shifted slightly right */
@@ -468,10 +466,159 @@
             bottom: 0;
             left: 0;
         }
+        
+        /* Login Screen */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(145deg, #f0a0c8, #d87aa8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            gap: 30px;
+        }
+        
+        #login-screen.hidden {
+            display: none;
+        }
+        
+        #login-screen h1 {
+            font-size: 32px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        
+        .player-select {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .player-button {
+            background: white;
+            border: 4px solid #e891b8;
+            border-radius: 12px;
+            padding: 30px 40px;
+            font-size: 24px;
+            color: #d87aa8;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .player-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background: #ffe4f0;
+        }
+        
+        .player-button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .player-button.disabled {
+            background: #cccccc;
+            color: #888888;
+            border-color: #999999;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .player-button.disabled:hover {
+            transform: none;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            background: #cccccc;
+        }
+        
+        /* Save Button */
+        #save-button {
+            position: absolute;
+            bottom: 45px;
+            right: 30px;
+            background: rgba(224, 224, 224, 0.95);
+            border: 2px solid rgba(138, 138, 138, 0.9);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 11px;
+            color: rgb(100, 100, 100);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: all 0.1s;
+            z-index: 15;
+            font-weight: bold;
+            display: none;
+        }
+        
+        #save-button:active {
+            background: rgba(180, 180, 200, 1);
+            transform: translateY(1px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        /* Reset Button */
+        #reset-button {
+            position: absolute;
+            top: 45px;
+            left: 30px;
+            background: rgba(239, 68, 68, 0.95);
+            border: 2px solid rgba(185, 28, 28, 0.9);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 11px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: all 0.1s;
+            z-index: 15;
+            font-weight: bold;
+            display: none;
+        }
+        
+        #reset-button:active {
+            background: rgba(185, 28, 28, 1);
+            transform: translateY(1px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        @media (orientation: portrait) {
+            #save-button, #reset-button {
+                display: none;
+            }
+        }
+        
+        @media (orientation: landscape) {
+            #save-button, #reset-button {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
-    <div id="game-container">
+    <!-- Login/Player Selection Screen -->
+    <div id="login-screen">
+        <h1>Choose Your Character</h1>
+        <div class="player-select">
+            <button class="player-button" onclick="selectPlayer('dacia')">
+                Play as Dacia
+            </button>
+            <button class="player-button disabled" disabled>
+                Play as Magnus<br>
+                <small style="font-size: 14px;">(Coming Soon)</small>
+            </button>
+        </div>
+    </div>
+    
+    <div id="game-container" style="display: none;">
         <!-- DS-style speakers (landscape only) -->
         <div class="ds-speaker ds-speaker-left">
             <div class="ds-speaker-hole"></div>
@@ -499,6 +646,12 @@
         
         <!-- Power LED -->
         <div class="power-led"></div>
+        
+        <!-- Save Button (landscape only) -->
+        <button id="save-button" onclick="handleSaveGame()">💾 SAVE</button>
+        
+        <!-- Reset Button (landscape only) -->
+        <button id="reset-button" onclick="handleResetProgress()">🔄 RESET</button>
         
         <div id="screen-frame">
             <!-- Phaser canvas will be inserted here -->
@@ -547,6 +700,148 @@
             </div>
         </div>
     </div>
+    
+    <!-- Firebase CDN (v9 compat mode for easier syntax) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- Firebase Save/Load Functions (must be before player selection) -->
+    <script>
+        // Firebase Save/Load Functions
+        async function saveGameState(playerName, saveData) {
+            try {
+                const db = window.firebaseDB;
+                if (!db) {
+                    console.error('Firebase not initialized');
+                    return false;
+                }
+                
+                await db.collection('saves').doc(playerName).set({
+                    ...saveData,
+                    lastSaved: new Date().toISOString()
+                });
+                
+                console.log('Game saved for', playerName);
+                return true;
+            } catch (error) {
+                console.error('Error saving game:', error);
+                return false;
+            }
+        }
+
+        async function loadGameState(playerName) {
+            try {
+                const db = window.firebaseDB;
+                if (!db) {
+                    console.error('Firebase not initialized');
+                    return null;
+                }
+                
+                const doc = await db.collection('saves').doc(playerName).get();
+                
+                if (doc.exists) {
+                    console.log('Loaded save data for', playerName);
+                    return doc.data();
+                } else {
+                    console.log('No save data found for', playerName);
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error loading game:', error);
+                return null;
+            }
+        }
+
+        // Make functions available globally
+        window.saveGameState = saveGameState;
+        window.loadGameState = loadGameState;
+    </script>
+    
+    <!-- Player Selection -->
+    <script>
+        // Store current player
+        window.currentPlayer = localStorage.getItem('currentPlayer') || null;
+        
+        function selectPlayer(playerName) {
+            window.currentPlayer = playerName;
+            localStorage.setItem('currentPlayer', playerName);
+            
+            // Hide login screen
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('game-container').style.display = 'flex';
+            
+            // Initialize game (loads from Firebase)
+            setTimeout(() => {
+                initGame();
+            }, 100);
+        }
+        
+        // Check if player already selected
+        if (window.currentPlayer) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('game-container').style.display = 'flex';
+        }
+        
+        // Make selectPlayer available globally
+        window.selectPlayer = selectPlayer;
+        
+        // Handle Save Game - UPDATED TO CALL ASYNC window.saveGame()
+        async function handleSaveGame() {
+            console.log('Save button clicked!');
+            
+            if (!window.game) {
+                console.error('Game not initialized');
+                return;
+            }
+            
+            // Get the active scene
+            const activeScene = window.game.scene.getScenes(true)[0];
+            
+            if (!activeScene) {
+                console.error('No active scene found');
+                return;
+            }
+            
+            // Call window.saveGame which saves to Firebase and shows mushroom!
+            await window.saveGame(activeScene);
+        }
+        
+        // Handle Reset Progress - Deletes all save data
+        async function handleResetProgress() {
+            if (!confirm('⚠️ RESET ALL PROGRESS?\n\nThis will delete:\n• All events and story progress\n• CD collection\n• Outfit changes\n• Laundry status\n• Firebase save data\n\nThis cannot be undone!')) {
+                return;
+            }
+            
+            console.log('🔄 Resetting all progress...');
+            
+            try {
+                // Delete from Firebase
+                if (window.currentPlayer && window.firebaseDB) {
+                    await window.firebaseDB.collection('saves').doc(window.currentPlayer).delete();
+                    console.log('✅ Deleted save data from Firebase');
+                }
+                
+                // Clear player selection
+                localStorage.removeItem('currentPlayer');
+                window.currentPlayer = null;
+                
+                console.log('✅ Progress reset complete!');
+                
+                // Reload the page to start fresh
+                alert('✅ All progress deleted!\n\nPage will reload to login screen.');
+                window.location.reload();
+            } catch (error) {
+                console.error('Error resetting progress:', error);
+                alert('❌ Error resetting progress. Check console.');
+            }
+        }
+        
+        window.handleSaveGame = handleSaveGame;
+        window.handleResetProgress = handleResetProgress;
+    </script>
     
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
     <script src="game.js"></script>
