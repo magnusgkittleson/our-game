@@ -7405,17 +7405,17 @@ class ConnorRoomScene2 extends Phaser.Scene {
         else if (this.nearConnor && aPressed) {
             this.buttonSound.play();
             this.faceNPCTowardsPlayer(this.connorNPC, 'connor');
-            this.showNPCDialogue('HNNNGGG!! *headbangs violently*', 'connor', this.connorNPC, 'connor');
+            this.showNPCDialogue('Uhhh Im kinda in the middle of something dude.', 'connor', this.connorNPC, 'connor');
         }
         else if (this.nearChris && aPressed) {
             this.buttonSound.play();
             this.faceNPCTowardsPlayer(this.chrisNPC, 'chris');
-            this.showNPCDialogue("What's up! Welcome to the party!", 'chris', this.chrisNPC, 'chris');
+            this.showNPCDialogue("Taught this kid everything he knows", 'chris', this.chrisNPC, 'chris');
         }
         else if (this.nearSkeleton && aPressed) {
             this.buttonSound.play();
             this.faceNPCTowardsPlayer(this.skeletonNPC, 'skeleton');
-            this.showNPCDialogue('...', 'skeleton', this.skeletonNPC, 'skeleton');
+            this.showNPCDialogue('Riiiiide that rail...', 'skeleton', this.skeletonNPC, 'skeleton');
         }
         
         // Movement
